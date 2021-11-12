@@ -1,3 +1,3 @@
-# Python Video Editor 
+# (very) Basic Python Video Editor 
 
-This is ... as you can see a video editor made with python
+This is ... as you can see a homemade video editor made with python
