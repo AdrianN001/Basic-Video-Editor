@@ -14,31 +14,33 @@ root = tkr.Tk()
 
 root.title('Video Editor')
 root.geometry('1280x720')
-
+root.iconbitmap('Git es Repok\Video Editor\icon.ico')
+root.configure(background='#292727')
 
 def videoCutting():  # Video Cutting Button's function
     
     videoCuttingRoot = tkr.Tk()
     videoCuttingRoot.title('Video Editor')
     videoCuttingRoot.geometry('1280x720')
-
+    videoCuttingRoot.iconbitmap('Git es Repok\Video Editor\icon.ico')
+    videoCuttingRoot.configure(background='#292727')
 
     file1 = filedialog.askopenfilename(initialdir='/', title = 'Choose a file', filetypes=(("MP4 file", "*.mp4"),("all files", "*.*")))
     tkr.Label(master = videoCuttingRoot,text= file1).pack() # It'll print out the location of the file 
 
 
     if file1 != None:  # Things with the files are starts here
-        kezdetLabel = tkr.Label(master = videoCuttingRoot, text = 'Kezdeti Időpont') # Input 1
-        kezdetLabel.pack()
+        kezdetLabel = tkr.Label(master = videoCuttingRoot, text = 'Kezdeti Időpont',background='#292727', border=0,font =('Consolas',19)) # Input 1
+        kezdetLabel.pack(padx=20, pady=30)
 
-        kezdet = tkr.Entry(master = videoCuttingRoot)
-        kezdet.pack()
+        kezdet = tkr.Entry(master = videoCuttingRoot,background='#545151', border=0,font =('Consolas',19))
+        kezdet.pack(padx=20, pady=30)
         
-        vegLabel = tkr.Label(master = videoCuttingRoot, text = 'Vegső Időpont') # Input2
-        vegLabel.pack()
+        vegLabel = tkr.Label(master = videoCuttingRoot, text = 'Vegső Időpont',background='#292727', border=0,font =('Consolas',19)) # Input2
+        vegLabel.pack(padx=20, pady=30)
 
-        veg = tkr.Entry(master = videoCuttingRoot)
-        veg.pack()
+        veg = tkr.Entry(master = videoCuttingRoot,background='#545151', border=0,font =('Consolas',19))
+        veg.pack(padx=20, pady=30)
         
         #Video cutting with the datas of the inputs
         def videoEdit():
@@ -50,8 +52,8 @@ def videoCutting():  # Video Cutting Button's function
                 clip2 = VideoFileClip(file1).subclip(0,veg.get())
 
             clip2.write_videofile("Final_Video.mp4") 
-        submit = tkr.Button(master = videoCuttingRoot, text='Submit', command=videoEdit)
-        submit.pack()
+        submit = tkr.Button(master = videoCuttingRoot, text='Submit', command=videoEdit,background='#545151', border=0,font =('Consolas',19))
+        submit.pack(padx=20, pady=30)
     videoCuttingRoot.mainloop()
 
 
@@ -59,13 +61,15 @@ def videoRotating():
     videoRotatingRoot = tkr.Tk()
     videoRotatingRoot.title('Video Rotating')
     videoRotatingRoot.geometry('1280x720')
+    videoRotatingRoot.iconbitmap('Git es Repok\Video Editor\icon.ico')
+    videoRotatingRoot.configure(background='#292727')
 
     file1 = filedialog.askopenfilename(initialdir='/', title = 'Choose a file', filetypes=(("MP4 file", "*.mp4"),("all files", "*.*")))
-    tkr.Label(master = videoRotatingRoot,text= file1).pack()
+    tkr.Label(master = videoRotatingRoot,text= file1).pack(padx=20, pady=30)
     
-    tkr.Label(master = videoRotatingRoot, text = 'Jelenlegi fok:').pack()
-    degreeLabel = tkr.Label(master = videoRotatingRoot, text = '0')
-    degreeLabel.pack()
+    tkr.Label(master = videoRotatingRoot, text = 'Jelenlegi fok:',background='#292727', border=0,font =('Consolas',19)).pack(padx=20, pady=30)
+    degreeLabel = tkr.Label(master = videoRotatingRoot, text = '0',background='#545151', border=0,font =('Consolas',19))
+    degreeLabel.pack(padx=20, pady=30)
 
 
     if file1 != None: # Actual Rotating
@@ -96,9 +100,9 @@ def videoRotating():
 
             clipRotate.write_videofile("Rotated_Clip.mp4") 
 
-        rotateRight = tkr.Button(master = videoRotatingRoot, text = "Rotateing Right",command=rotateingRight).pack() # Buttons
-        rotateLeft = tkr.Button(master = videoRotatingRoot, text = "Rotateing Left",command=rotateingLeft).pack()
-        submit = tkr.Button(master = videoRotatingRoot, text = 'Done', command= rendering).pack()
+        rotateRight = tkr.Button(master = videoRotatingRoot, text = "Rotateing Right",command=rotateingRight,background='#545151', border=0,font =('Consolas',19)).pack(padx=20, pady=30) # Buttons
+        rotateLeft = tkr.Button(master = videoRotatingRoot, text = "Rotateing Left",command=rotateingLeft,background='#545151', border=0,font =('Consolas',19)).pack(padx=20, pady=30)
+        submit = tkr.Button(master = videoRotatingRoot, text = 'Done', command= rendering,background='#545151', border=0,font =('Consolas',19)).pack(padx=20, pady=30)
     videoRotatingRoot.mainloop()
 
 
@@ -125,10 +129,19 @@ def videoMerging():
 
 
 #   MAIN MENU
-greeting = tkr.Label(master = root,text= "Welcom To My Video Editor").pack()
-videoEditingButton = tkr.Button(master = root,text = "Video Editing", command= videoCutting).pack()
-videoRotatingButton = tkr.Button(master = root,text = "Video Rotating", command= videoRotating).pack()
-videoRotatingButton = tkr.Button(master = root,text = "Video Merging", command= videoMerging).pack()
+greeting = tkr.Label(master = root,text= "Welcome To My Video Editor",background='#545151', border=0,font =('Arial',25)).pack(padx=20, pady=30)
+
+
+
+videoEditingButton = tkr.Button(master = root,text = "Video Editing", command= videoCutting,background='#545151', border=0,font =('Consolas',19)).pack(padx=20, pady=30)
+
+
+
+videoRotatingButton = tkr.Button(master = root,text = "Video Rotating", command= videoRotating,background='#545151', border=0,font =('Consolas',19)).pack(padx=20, pady=30)
+
+
+
+videoRotatingButton = tkr.Button(master = root,text = "Video Merging", command= videoMerging,background='#545151', border=0,font =('Consolas',19)).pack(padx=20, pady=30)
 
 
 
