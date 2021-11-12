@@ -17,7 +17,7 @@ root.geometry('1280x720')
 
 
 def videoCutting():  # Video Cutting Button's function
-    global videoCuttingRoot
+    
     videoCuttingRoot = tkr.Tk()
     videoCuttingRoot.title('Video Editor')
     videoCuttingRoot.geometry('1280x720')
@@ -55,18 +55,16 @@ def videoCutting():  # Video Cutting Button's function
     videoCuttingRoot.mainloop()
 
 
-def videoRotateing():
-    videoCuttingRoot.destroy()
-    global videoRotateingRoot
-    videoRotateingRoot = tkr.Tk()
-    videoRotateingRoot.title('Video Editor')
-    videoRotateingRoot.geometry('1280x720')
+def videoRotating():
+    videoRotatingRoot = tkr.Tk()
+    videoRotatingRoot.title('Video Rotating')
+    videoRotatingRoot.geometry('1280x720')
 
     file1 = filedialog.askopenfilename(initialdir='/', title = 'Choose a file', filetypes=(("MP4 file", "*.mp4"),("all files", "*.*")))
-    tkr.Label(master = videoRotateingRoot,text= file1).pack()
+    tkr.Label(master = videoRotatingRoot,text= file1).pack()
     
-    tkr.Label(master = videoRotateingRoot, text = 'Jelenlegi fok:').pack()
-    degreeLabel = tkr.Label(master = videoRotateingRoot, text = '0')
+    tkr.Label(master = videoRotatingRoot, text = 'Jelenlegi fok:').pack()
+    degreeLabel = tkr.Label(master = videoRotatingRoot, text = '0')
     degreeLabel.pack()
 
 
@@ -98,23 +96,23 @@ def videoRotateing():
 
             clipRotate.write_videofile("Rotated_Clip.mp4") 
 
-        rotateRight = tkr.Button(master = videoRotateingRoot, text = "Rotateing Right",command=rotateingRight).pack() # Buttons
-        rotateLeft = tkr.Button(master = videoRotateingRoot, text = "Rotateing Left",command=rotateingLeft).pack()
-        submit = tkr.Button(master = videoRotateingRoot, text = 'Done', command= rendering).pack()
-    videoRotateingRoot.mainloop()
+        rotateRight = tkr.Button(master = videoRotatingRoot, text = "Rotateing Right",command=rotateingRight).pack() # Buttons
+        rotateLeft = tkr.Button(master = videoRotatingRoot, text = "Rotateing Left",command=rotateingLeft).pack()
+        submit = tkr.Button(master = videoRotatingRoot, text = 'Done', command= rendering).pack()
+    videoRotatingRoot.mainloop()
 
 
 def videoMerging():
-    global videoMergingRoot
-    videoMergingRoot = tkr.Tk()
-    videoMergingRoot.title('Video Merger')
-    videoMergingRoot.geometry('1280x720')
+    #global videoMergingRoot
+    #videoMergingRoot = tkr.Tk()
+    #videoMergingRoot.title('Video Merger')
+    #videoMergingRoot.geometry('1280x720')
 
     files = filedialog.askopenfilenames(initialdir='/', title = 'Choose a file', filetypes=(("MP4 file", "*.mp4"),("all files", "*.*")))
-    tkr.Label(master = videoMergingRoot,text= files).pack()
+    #tkr.Label(master = videoMergingRoot,text= files).pack()
 
     if files != None:
-        clips = []
+        clips = [] # Here it creates a lot of clips from the files 
         for x in files:
             clip = VideoFileClip(x)
             clips.append(clip)
@@ -122,15 +120,15 @@ def videoMerging():
         final_clip.write_videofile('Merged_Video.mp4')
 
 
-    videoMergingRoot = tkr.Tk()
+   # videoMergingRoot = tkr.Tk()
 
 
 
 #   MAIN MENU
 greeting = tkr.Label(master = root,text= "Welcom To My Video Editor").pack()
 videoEditingButton = tkr.Button(master = root,text = "Video Editing", command= videoCutting).pack()
-videoRotateingButton = tkr.Button(master = root,text = "Video Rotateing", command= videoRotateing).pack()
-videoRotateingButton = tkr.Button(master = root,text = "Video Merging", command= videoMerging).pack()
+videoRotatingButton = tkr.Button(master = root,text = "Video Rotating", command= videoRotating).pack()
+videoRotatingButton = tkr.Button(master = root,text = "Video Merging", command= videoMerging).pack()
 
 
 
